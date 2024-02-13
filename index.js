@@ -28,13 +28,6 @@ function StartGame() {
 
 function get_random_card() {
     card = Math.floor(Math.random() * 13) + 1
-        // if (card > 10) {
-        //     return 10
-        // } else if (card === 1) {
-        //     return 11
-        // } else {
-        //     return card
-        // }
     return card
 }
 
@@ -140,10 +133,11 @@ function update_display() {
         string_dealer_cards = display_cards(dealer_cards) 
         
         while (dealer_sum < 17 && your_sum <= 21) {
-            new_card = get_random_card()
-            dealer_sum = card_sum(dealer_cards) 
-            string_dealer_cards = display_cards(dealer_cards) 
+            dealer_cards.push(get_random_card()) 
+            dealer_sum = card_sum(dealer_cards)     
         }
+        string_dealer_cards = display_cards(dealer_cards) 
+
         document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " + string_dealer_cards;
         document.getElementById('Dealer_Sum').textContent = "Dealer Sum: " + dealer_sum;
         
