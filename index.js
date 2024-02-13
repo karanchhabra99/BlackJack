@@ -28,13 +28,14 @@ function StartGame() {
 
 function get_random_card() {
     card = Math.floor(Math.random() * 13) + 1
-    if (card > 10) {
-        return 10
-    } else if (card === 1) {
-        return 11
-    } else {
-        return card
-    }
+        // if (card > 10) {
+        //     return 10
+        // } else if (card === 1) {
+        //     return 11
+        // } else {
+        //     return card
+        // }
+    return card
 }
 
 function draw_card() {
@@ -80,30 +81,68 @@ function new_round() {
     }
 }
 
-function update_display() {
-    string_your_cards = ""
-    your_sum = 0
-    
-    for (let i = 0; i < your_cards.length; i++) {
-        string_your_cards += your_cards[i] + " "
-        your_sum += your_cards[i]
+function display_cards(cards_in_hand) {
+    string_cards =""
+    for (let i = 0; i < cards_in_hand.length; i++) {
+        if (cards_in_hand[i] === 1) {
+            string_cards +=  "A "
+        } else if (cards_in_hand[i] === 11) {
+            string_cards +=  "J "
+        } else if (cards_in_hand[i] === 12) {
+            string_cards +=  "Q "
+        } else if (cards_in_hand[i] === 13) {
+            string_cards +=  "K "
+        } else {
+            string_cards += cards_in_hand[i] + " "
+        }
+        
     }
+    return string_cards
 
+}
+
+function card_sum(cards_in_hand) {
+    sum =0
+    count_of_a =0
+    for (let i = 0; i < cards_in_hand.length; i++) {
+        if (cards_in_hand[i] ===1) {
+            count_of_a +=  1
+            sum +=1
+        } else if (cards_in_hand[i] >= 10) {
+            sum +=  10
+        } else {
+            sum += cards_in_hand[i] 
+        }
+
+
+    for (let j =0; j < count_of_a; j++){
+        if (sum+10 <= 21 ){
+            sum +=10
+        }
+
+    }    
+        
+    }
+    return sum
+
+}
+
+
+function update_display() {
+    string_your_cards = display_cards(your_cards)
+    your_sum = card_sum(your_cards) 
 
     if (check_clicked === false) {
-        document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " + dealer_cards[0] + " Hidden";
-        document.getElementById('Dealer_Sum').textContent = "Dealer Sum: " + dealer_cards[0];
+        document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " +display_cards([dealer_cards[0]])  + " Hidden";
+        document.getElementById('Dealer_Sum').textContent = "Dealer Sum: " + card_sum([dealer_cards[0]]);
     } else {
-        string_dealer_cards = ""
-        dealer_sum = 0
-        for (let i = 0; i < dealer_cards.length; i++) {
-            string_dealer_cards += dealer_cards[i] + " "
-            dealer_sum += dealer_cards[i]
-        }
+        dealer_sum = card_sum(dealer_cards) 
+        string_dealer_cards = display_cards(dealer_cards) 
+        
         while (dealer_sum < 17 && your_sum <= 21) {
             new_card = get_random_card()
-            string_dealer_cards += new_card + " "
-            dealer_sum += new_card
+            dealer_sum = card_sum(dealer_cards) 
+            string_dealer_cards = display_cards(dealer_cards) 
         }
         document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " + string_dealer_cards;
         document.getElementById('Dealer_Sum').textContent = "Dealer Sum: " + dealer_sum;
