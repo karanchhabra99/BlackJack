@@ -104,6 +104,7 @@ function display_cards(cards_in_hand) {
 function card_sum(cards_in_hand) {
     sum =0
     count_of_a =0
+
     for (let i = 0; i < cards_in_hand.length; i++) {
         if (cards_in_hand[i] ===1) {
             count_of_a +=  1
@@ -114,15 +115,14 @@ function card_sum(cards_in_hand) {
             sum += cards_in_hand[i] 
         }
 
-
+    }
     for (let j =0; j < count_of_a; j++){
-        if (sum+10 <= 21 ){
-            sum +=10
+        if (sum+10 <= 21 ) {
+            sum += 10
         }
-
     }    
         
-    }
+
     return sum
 
 }
