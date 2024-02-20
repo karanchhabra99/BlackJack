@@ -63,7 +63,7 @@ function new_round() {
     check_clicked = false
     if  (money>10) {
     pot = document.getElementById('Pot')
-    pot.textContent = 'Pot: $20'
+    pot.textContent = 'Your Bet: $10'
     money -= 10
     dealer_cards = [get_random_card(), get_random_card()]
     your_cards = [get_random_card(), get_random_card()]
@@ -126,7 +126,7 @@ function update_display() {
     your_sum = card_sum(your_cards) 
 
     if (check_clicked === false) {
-        document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " +display_cards([dealer_cards[0]])  + " Hidden";
+        document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " +display_cards([dealer_cards[0]])  + "and Face Down";
         document.getElementById('Dealer_Sum').textContent = "Dealer Sum: " + card_sum([dealer_cards[0]]);
     } else {
         dealer_sum = card_sum(dealer_cards) 

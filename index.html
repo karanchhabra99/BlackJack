@@ -16,28 +16,29 @@
             <input type="text" class="form-control" id="Username" placeholder="name@example.com">
             <label id="Username_label" for="Username">Name</label>
         </div>
-        <button id="StartGame" class="btn btn-primary w-100 py-2" onclick="StartGame()">Start Game</button>
+        <button id="StartGame" class="btn btn-primary w-100 py-2" onclick="StartGame()">Place Bet ($10)</button>
         </div>
         <div class="col-lg-6 col-xxl-4 my-5 mx-auto" id = 'poker_table'>
             <div class="d-grid gap-2">
               <!-- <p id="current_count">0</p> -->
               <div class="p-5 text-center bg-body-tertiary rounded-3">
                   <!-- <h1 class="text-body-emphasis">Jumbotron with icon</h1><svg class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="100" height="100"><use xlink:href="#bootstrap"></use></svg> -->
-                  <h1 class="text-body-emphasis" id="Dealer_Cards">Dealer Cards: </h1>    
+                  <h1 class="text-body-emphasis" id="Dealer_Cards">Dealer Cards: </h1>
+   
                   <h1 class="text-body-emphasis" id="Dealer_Sum">Dealer Sum: </h1> 
                   <BR><BR><BR>   
-                    <h1 class="text-body-emphasis" id="Pot">Pot: $20</h1>
+                    <h1 class="text-body-emphasis" id="Pot">Your Bet: $10</h1>
                 <BR><BR><BR>
                 <h1 class="text-body-emphasis" id="Your_Cards">Your Cards: </h1>    
                   <h1 class="text-body-emphasis" id="Your_Sum">Your Sum: </h1> 
                   <h1 class="text-body-emphasis" id="Your_Money">Money: $</h1> 
                 </div>
               <div id ='action_buttons'>
-              <button id="Check" onclick="check()" class="btn btn-primary" type="button">Check</button>
-              <button id ="Draw Card" class="btn btn-outline-secondary" onclick="draw_card()" type="button">Draw a Card</button>
+              <button id="Check" onclick="check()" class="btn btn-primary" type="button">Stand</button>
+              <button id ="Draw Card" class="btn btn-outline-secondary" onclick="draw_card()" type="button">Hit</button>
               </div>
               <div id = 'New_game_button'>
-              <button id="New_game" onclick="new_round()" class="btn btn-primary" type="button">New Game</button>
+              <button id="New_game" onclick="new_round()" class="btn btn-primary" type="button">Place Bet ($10)</button>
             </div>
               <script  src="index.js"></script>
             </div>
