@@ -124,7 +124,7 @@ function renderCards(dealer_cards) {
     let html = '';
     for(let i = 0; i < dealer_cards.length; i++) {
         let imagePath = display_cards([dealer_cards[i]]);
-        html += `<img src="${imagePath}.png" width="60" height="100">`;
+        html += `<img src="${imagePath}.png" width="60" height="90">`;
     }
     return html;
 }
