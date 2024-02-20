@@ -78,15 +78,15 @@ function display_cards(cards_in_hand) {
     string_cards =""
     for (let i = 0; i < cards_in_hand.length; i++) {
         if (cards_in_hand[i] === 1) {
-            string_cards +=  "A "
+            string_cards +=  "A"
         } else if (cards_in_hand[i] === 11) {
-            string_cards +=  "J "
+            string_cards +=  "J"
         } else if (cards_in_hand[i] === 12) {
-            string_cards +=  "Q "
+            string_cards +=  "Q"
         } else if (cards_in_hand[i] === 13) {
-            string_cards +=  "K "
+            string_cards +=  "K"
         } else {
-            string_cards += cards_in_hand[i] + " "
+            string_cards += cards_in_hand[i] 
         }
         
     }
@@ -120,25 +120,36 @@ function card_sum(cards_in_hand) {
 
 }
 
+function renderCards(dealer_cards) {
+    let html = '';
+    for(let i = 0; i < dealer_cards.length; i++) {
+        let imagePath = display_cards([dealer_cards[i]]);
+        html += `<img src="${imagePath}.png" width="60" height="100">`;
+    }
+    return html;
+}
 
+ 
 function update_display() {
-    string_your_cards = display_cards(your_cards)
+    string_your_cards = renderCards(your_cards )
     your_sum = card_sum(your_cards) 
 
     if (check_clicked === false) {
-        document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " +display_cards([dealer_cards[0]])  + "and Face Down";
+        // document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " +display_cards([dealer_cards[0]])  + "and Face Down";
+        // let imagePath = display_cards([dealer_cards[0],"FaceDown"]);
+        document.getElementById('Dealer_Cards').innerHTML = renderCards([dealer_cards[0],"FaceDown"] )
         document.getElementById('Dealer_Sum').textContent = "Dealer Sum: " + card_sum([dealer_cards[0]]);
     } else {
         dealer_sum = card_sum(dealer_cards) 
-        string_dealer_cards = display_cards(dealer_cards) 
+        string_dealer_cards = renderCards(dealer_cards )
         
         while (dealer_sum < 17 && your_sum <= 21) {
             dealer_cards.push(get_random_card()) 
             dealer_sum = card_sum(dealer_cards)     
         }
-        string_dealer_cards = display_cards(dealer_cards) 
+        string_dealer_cards = renderCards(dealer_cards )
 
-        document.getElementById('Dealer_Cards').textContent = "Dealer Cards: " + string_dealer_cards;
+        document.getElementById('Dealer_Cards').innerHTML =  string_dealer_cards;
         document.getElementById('Dealer_Sum').textContent = "Dealer Sum: " + dealer_sum;
         
         pot = document.getElementById('Pot')
@@ -160,7 +171,7 @@ function update_display() {
     }
 
 
-    document.getElementById('Your_Cards').textContent = "Your Cards: " + string_your_cards;
+    document.getElementById('Your_Cards').innerHTML =string_your_cards;
     document.getElementById('Your_Sum').textContent = "Your Sum: " + your_sum;
     document.getElementById('Your_Money').textContent = "Money: $" + money;
 }
