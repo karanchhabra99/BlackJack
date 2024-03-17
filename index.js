@@ -162,9 +162,9 @@ function update_display() {
             pot.textContent ="You Won"
             money+=20
         } else if (your_sum >21 ) {
-            pot.textContent ="You are bursted"
+            pot.textContent ="You are busted"
         } else if (dealer_sum >21 ) {
-            pot.textContent ="Dealer are bursted"
+            pot.textContent ="Dealer are busted"
             money +=20
         }
 
